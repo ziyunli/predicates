@@ -31,7 +31,9 @@
   (every? (set->predicate (:awards book)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [filtered (filter pred a-seq)
+        is-hit? (> (count filtered) 0)]
+    (if is-hit? (pred (first filtered)) nil)))
 
 (defn my-every? [pred a-seq]
   :-)
