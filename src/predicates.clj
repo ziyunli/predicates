@@ -36,8 +36,11 @@
     (if is-hit? (pred (first filtered)) nil)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [filtered (filter pred a-seq)
+        filtered-count (count filtered)]
+    (= filtered-count (count a-seq))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [k] (= (mod n k) 0))]
+    (not (some pred (range 2 n)))))
 ;^^
